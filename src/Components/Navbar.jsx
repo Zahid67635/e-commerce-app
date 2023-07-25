@@ -1,5 +1,6 @@
 // eslint-disable-next-line no-unused-vars
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
     return (
@@ -14,21 +15,21 @@ const Navbar = () => {
                     </a>
                     <ul className="items-stretch hidden space-x-3 lg:flex">
                         <li className="flex">
-                            <a rel="noopener noreferrer" href="#" className="flex items-center px-4 -mb-1 border-b-2 border-transparent text-sky-600 border-sky-600">Home</a>
+                            <Link to='/' rel="noopener noreferrer" href="#" className="flex items-center px-4 -mb-1 border-b-2 border-transparent text-sky-600 border-sky-600">Home</Link>
                         </li>
                         <li className="flex">
-                            <a rel="noopener noreferrer" href="#" className="flex items-center px-4 -mb-1 border-b-2 border-transparent">Products</a>
+                            <Link to='/products' rel="noopener noreferrer" href="#" className="flex items-center px-4 -mb-1 border-b-2 border-transparent">Products</Link>
                         </li>
                         <li className="flex">
-                            <a rel="noopener noreferrer" href="#" className="flex items-center px-4 -mb-1 border-b-2 border-transparent">Link</a>
+                            <Link to='/dashboard' rel="noopener noreferrer" href="#" className="flex items-center px-4 -mb-1 border-b-2 border-transparent">Dashboard</Link>
                         </li>
                         <li className="flex">
-                            <a rel="noopener noreferrer" href="#" className="flex items-center px-4 -mb-1 border-b-2 border-transparent">Link</a>
+                            <Link to='/cart' rel="noopener noreferrer" href="#" className="flex items-center px-4 -mb-1 border-b-2 border-transparent">Cart</Link>
                         </li>
                     </ul>
                     <div className="items-center flex-shrink-0 hidden lg:flex gap-2">
-                        <button className="self-center px-8 py-3 rounded hover:bg-slate-200">Sign in</button>
-                        <button className="self-center px-8 py-3 font-semibold rounded hover:bg-sky-600 bg-sky-500 text-gray-50 ">Sign up</button>
+                        <Link to='/login' className="self-center px-8 py-3 rounded hover:bg-slate-200">Sign in</Link>
+                        <Link to='signUp' className="self-center px-8 py-3 font-semibold rounded hover:bg-sky-600 bg-sky-500 text-gray-50 ">Sign up</Link>
                     </div>
                     <button className="p-4 lg:hidden">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-6 h-6 text-gray-800">
