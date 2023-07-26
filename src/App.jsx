@@ -8,6 +8,8 @@ import Products from './Pages/Products/Products'
 import Login from './Pages/Login/Login'
 import SignUp from './Pages/SignUp/SignUp'
 import Cart from './Pages/Cart/Cart'
+import ProductDetails from './Pages/Products/ProductDetails'
+import Dashboard from './Pages/Dashboard/Dashboard'
 
 function App() {
   const router = createBrowserRouter([
@@ -24,6 +26,13 @@ function App() {
           element: <Products />
         },
         {
+          path: '/productDetails/:id',
+          element: <ProductDetails />,
+          loader: ({ params }) => {
+            return fetch(`https://fakestoreapi.com/products/${params.id}`)
+          }
+        },
+        {
           path: '/login',
           element: <Login />
         },
@@ -34,6 +43,10 @@ function App() {
         {
           path: '/cart',
           element: <Cart />
+        },
+        {
+          path: '/dashboard',
+          element: <Dashboard />
         },
       ]
     },

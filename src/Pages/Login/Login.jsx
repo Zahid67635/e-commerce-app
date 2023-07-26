@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 const Login = () => {
     return (
         <div className='flex gap-20 justify-center items-center py-10 flex-row-reverse'>
-            <form className="overflow-hidden rounded bg-white text-slate-500 shadow-lg shadow-sky-300 h-96 w-80">
+            <form className="overflow-hidden rounded bg-white text-slate-500 shadow-lg shadow-sky-300 h-96 w-96">
                 {/*  <!-- Body--> */}
                 <div className="p-6">
                     <header className="mb-4 text-center">
@@ -14,7 +14,7 @@ const Login = () => {
                     </header>
                     <div className="flex flex-col space-y-8">
                         {/*      <!-- Input field --> */}
-                        <div className="relative my-6">
+                        <div className="relative mt-6 mb-3">
                             <input
                                 id="id-b03"
                                 type="number"
@@ -33,7 +33,7 @@ const Login = () => {
                             </small>
                         </div>
                         {/*      <!-- Input field --> */}
-                        <div className="relative my-6">
+                        <div className="relative">
                             <input
                                 id="id-b13"
                                 type="password"
@@ -75,7 +75,7 @@ const Login = () => {
                     <p className='py-1 text-sm font-semibold text-center'>Don't have an account?<span><Link to='/signUp' className='text-blue-500'> Sign Up</Link></span></p>
                 </div>
             </form>
-            <div className='w-2/5'>
+            <div className='w-2/5 md:block hidden'>
                 <img src="https://img.freepik.com/free-vector/computer-login-concept-illustration_114360-7962.jpg?w=2000" className='w-full' alt="" />
             </div>
         </div>
