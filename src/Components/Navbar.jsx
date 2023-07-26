@@ -1,6 +1,7 @@
 // eslint-disable-next-line no-unused-vars
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { HiShoppingCart } from "react-icons/hi";
 
 const Navbar = () => {
     return (
@@ -15,7 +16,7 @@ const Navbar = () => {
                     </a>
                     <ul className="items-stretch hidden space-x-1 lg:flex">
                         <li className="flex">
-                            <Link to='/' rel="noopener noreferrer" href="#" className="flex items-center px-4 -mb-1 border-b-2 border-transparent text-sky-600 border-sky-600">Home</Link>
+                            <Link to='/' className="flex items-center px-4 -mb-1 border-b-2 border-transparent border-sky-600">Home</Link>
                         </li>
                         <li className="flex">
                             <Link to='/products' rel="noopener noreferrer" href="#" className="flex items-center px-4 -mb-1 border-b-2 border-transparent">Products</Link>
@@ -24,7 +25,7 @@ const Navbar = () => {
                             <Link to='/dashboard' rel="noopener noreferrer" href="#" className="flex items-center px-4 -mb-1 border-b-2 border-transparent">Dashboard</Link>
                         </li>
                         <li className="flex">
-                            <Link to='/cart' rel="noopener noreferrer" href="#" className="flex items-center px-4 -mb-1 border-b-2 border-transparent">Cart</Link>
+                            <Link to='/cart' rel="noopener noreferrer" href="#" className="flex items-center px-4 -mb-1 border-b-2 border-transparent">Cart <span className='text-2xl'><HiShoppingCart className='text-orange-300' /></span></Link>
                         </li>
                     </ul>
                     <div className="items-center flex-shrink-0 hidden lg:flex gap-2">

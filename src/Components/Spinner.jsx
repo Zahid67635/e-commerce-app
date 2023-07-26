@@ -2,7 +2,8 @@
 const Spinner = () => {
     return (
         <div className="min-h-screen flex justify-center items-center">
-            <div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin border-sky-600"></div>
+            <span className="text-5xl font-bold text-green-300 shadow-lg shadow-green-300">L</span>
+            <div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin border-sky-600 shadow-lg shadow-green-300 mx-2"></div><span className="text-5xl font-bold text-green-300 shadow-lg shadow-green-300">ading...</span>
         </div>
     );
 };

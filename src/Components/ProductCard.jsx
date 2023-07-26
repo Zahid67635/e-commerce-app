@@ -2,7 +2,7 @@
 
 import { Link } from "react-router-dom";
 
-const ProductCard = ({ details }) => {
+const ProductCard = ({ details, cartProduct }) => {
     const { title, image, rating, price, id } = details
     return (
         <div>
@@ -29,7 +29,7 @@ const ProductCard = ({ details }) => {
                 </div>
                 {/*  <!-- Action base sized basic button --> */}
                 <div className="flex justify-between p-6 pt-0 absolute bottom-0 w-full">
-                    <button className="h-10 w-1/2 rounded bg-emerald-500 px-1 text-sm font-medium tracking-wide text-white transition duration-300 hover:bg-emerald-600 focus:bg-emerald-700 focus-visible:outline-none disabled:cursor-not-allowed disabled:border-emerald-300 disabled:bg-emerald-300 disabled:shadow-none">
+                    <button onClick={() => cartProduct(details)} className="h-10 w-1/2 rounded bg-emerald-500 px-1 text-sm font-medium tracking-wide text-white transition duration-300 hover:bg-emerald-600 focus:bg-emerald-700 focus-visible:outline-none disabled:cursor-not-allowed disabled:border-emerald-300 disabled:bg-emerald-300 disabled:shadow-none">
                         <span>ADD TO CART</span>
                     </button>
                     <Link to={`/productDetails/${id}`} className="bg-blue-500 rounded-md p-3 text-white hover:bg-blue-400">Details</Link>

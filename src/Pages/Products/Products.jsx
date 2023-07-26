@@ -2,14 +2,17 @@
 import React, { useEffect, useState } from 'react';
 import ProductCard from '../../Components/ProductCard';
 import Spinner from '../../Components/Spinner';
+import { toast } from 'react-hot-toast';
 
 const Products = () => {
+    let cartItems = [];
     const [products, setProducts] = useState([])
     const [active, setActive] = useState(false)
     const [activeAll, setActiveAll] = useState(true)
     const [activeElec, setActiveElec] = useState(false)
     const [activeCloth, setActiveCloth] = useState(false)
     const [loading, setLoading] = useState(true)
+
     useEffect(() => {
         fetch('https://fakestoreapi.com/products')
             .then(res => res.json())
@@ -19,6 +22,16 @@ const Products = () => {
             })
             .catch(er => console.log(er))
     }, [])
+
+    const cartProduct = (item) => {
+        const existingData = localStorage.getItem('myCart');
+        if (existingData) {
+            cartItems = JSON.parse(existingData);
+        }
+        cartItems.push(item)
+        localStorage.setItem('myCart', JSON.stringify(cartItems));
+        toast.success('Item added to cart!')
+    }
     const loadByCategory = (name) => {
         if (name) {
             fetch(`https://fakestoreapi.com/products/category/${name}`)
@@ -86,7 +99,7 @@ const Products = () => {
                 loading ? <Spinner /> :
                     <div className='md:grid grid-cols-3 gap-8'>
                         {
-                            products.map(p => <ProductCard details={p} key={p.id} />)
+                            products.map(p => <ProductCard details={p} key={p.id} cartProduct={cartProduct} />)
                         }
                     </div>
             }
