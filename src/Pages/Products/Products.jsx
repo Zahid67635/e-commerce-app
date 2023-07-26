@@ -6,7 +6,7 @@ import Spinner from '../../Components/Spinner';
 const Products = () => {
     const [products, setProducts] = useState([])
     const [active, setActive] = useState(false)
-    const [activeAll, setActiveAll] = useState(false)
+    const [activeAll, setActiveAll] = useState(true)
     const [activeElec, setActiveElec] = useState(false)
     const [activeCloth, setActiveCloth] = useState(false)
     const [loading, setLoading] = useState(true)
@@ -35,6 +35,7 @@ const Products = () => {
         setActive(false)
         setActiveCloth(false)
         setActiveElec(false)
+        setLoading(true)
         if (!activeAll) {
             fetch('https://fakestoreapi.com/products')
                 .then(res => res.json())
@@ -51,6 +52,7 @@ const Products = () => {
         setActiveElec(false)
         setActiveAll(false)
         loadByCategory('jewelery')
+        setLoading(true)
     }
     const handleClothing = () => {
         setActiveCloth(!activeCloth)
@@ -58,6 +60,7 @@ const Products = () => {
         setActiveAll(false)
         setActive(false)
         loadByCategory("men's clothing")
+        setLoading(true)
     }
     const handleElectronic = () => {
         setActiveElec(!activeElec)
@@ -65,6 +68,7 @@ const Products = () => {
         setActive(false)
         setActiveCloth(false)
         loadByCategory('electronics')
+        setLoading(true)
     }
     return (
         <div>
