@@ -1,4 +1,5 @@
 
+import { toast } from "react-hot-toast";
 import CartItem from "./CartItem";
 
 const Cart = () => {
@@ -29,7 +30,7 @@ const Cart = () => {
                                 cartArray.map(c => <CartItem refreshPage={refreshPage} detail={c} key={c.id} />) : <h1 className="text-4xl font-bold my-40 text-end">No items in the cart!!</h1>
                         }
                     </div>
-                    <div className='col-span-4 flex justify-end'>
+                    <div className='col-span-4 flex md:justify-end'>
                         {
                             cartArray.length > 0 ?
                                 <div className='w-4/5'>
@@ -57,7 +58,7 @@ const Cart = () => {
                                             <span className='ml-auto text-gray-900'>${total + 5}</span>
                                         </div>
                                         <div className='mt-6 mb-2'>
-                                            <button className='p-3 bg-green-500 hover:bg-green-600 w-full text-white font-bold'>Pay</button>
+                                            <button onClick={() => toast.success('Congratulations, Order Confirmed!!')} className='p-3 bg-green-500 hover:bg-green-600 w-full text-white font-bold'>Order</button>
                                         </div>
                                     </div>
                                 </div>

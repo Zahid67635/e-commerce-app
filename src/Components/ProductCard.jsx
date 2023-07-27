@@ -6,8 +6,8 @@ import cartProduct from "./function/AddToCart";
 const ProductCard = ({ details }) => {
     const { title, image, rating, price, id } = details
     return (
-        <div>
-            <div className="overflow-hidden rounded-lg bg-white text-slate-500 shadow-lg shadow-green-300 md:h-[430px] w-[350px] relative">
+        <div className="md:mb-0 mb-3">
+            <div className="overflow-hidden rounded-lg bg-white text-slate-500 shadow-lg shadow-green-300 md:h-[430px] md:w-[350px] relative">
                 {/*  <!-- Image --> */}
                 <figure>
                     <img
@@ -18,7 +18,7 @@ const ProductCard = ({ details }) => {
                 </figure>
                 {/*  <!-- Body--> */}
                 <div className="p-6">
-                    <header className="mb-4">
+                    <header className="md:mb-4 mb-10">
                         <h3 className="text-lg font-medium text-slate-700">
                             {title}
                         </h3>

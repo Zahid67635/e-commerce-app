@@ -1,12 +1,38 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/no-unescaped-entities */
 // eslint-disable-next-line no-unused-vars
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext, useState } from 'react';
+import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../Context/UserContext';
+import { toast } from 'react-hot-toast';
 
 const Login = () => {
+    const { login } = useContext(AuthContext)
+    const [signInError, setSignInError] = useState('')
+    const location = useLocation();
+    const navigate = useNavigate();
+    const from = location.state?.from?.pathname || '/';
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        const form = e.target;
+        const email = form.email.value;
+        const password = form.password.value;
+        login(email, password)
+            .then(result => {
+                const user = result.user;
+                navigate(from, { replace: true });
+                form.reset()
+                toast.success('logged in')
+            })
+            .catch(er => {
+                console.log(er)
+                setSignInError(er.message)
+            })
+
+    }
     return (
         <div className='flex gap-20 justify-center items-center py-10 flex-row-reverse'>
-            <form className="overflow-hidden rounded bg-white text-slate-500 shadow-lg shadow-sky-300 h-96 w-96">
+            <form onSubmit={handleSubmit} className="overflow-hidden rounded bg-white text-slate-500 shadow-lg shadow-sky-300 h-96 w-96">
                 {/*  <!-- Body--> */}
                 <div className="p-6">
                     <header className="mb-4 text-center">
@@ -17,19 +43,19 @@ const Login = () => {
                         <div className="relative mt-6 mb-3">
                             <input
                                 id="id-b03"
-                                type="number"
-                                name="id-b03"
-                                placeholder="your number"
+                                type="email"
+                                name="email"
+                                placeholder="your email"
                                 className="peer relative h-10 w-full rounded border border-slate-200 px-4 text-sm text-slate-500 placeholder-transparent outline-none transition-all bg-white invalid:border-pink-500 invalid:text-pink-500 focus:border-sky-300 focus:outline-none invalid:focus:border-pink-500 disabled:cursor-not-allowed disabled:bg-slate-50 disabled:text-slate-400 "
                             />
                             <label
                                 htmlFor="id-b03"
                                 className="absolute left-2 -top-2 z-[1] px-2 text-xs text-slate-400 transition-all before:absolute before:top-0 before:left-0 before:z-[-1] before:block before:h-full before:w-full before:bg-white before:transition-all peer-placeholder-shown:top-2.5 peer-placeholder-shown:text-sm peer-required:after:text-pink-500 peer-required:after:content-['\00a0*'] peer-invalid:text-pink-500 peer-focus:-top-2 peer-focus:text-xs peer-focus:text-sky-300 peer-invalid:peer-focus:text-pink-500 peer-disabled:cursor-not-allowed peer-disabled:text-slate-400 peer-disabled:before:bg-transparent"
                             >
-                                Phone Number
+                                Email
                             </label>
                             <small className="absolute flex w-full justify-between px-4 py-1 text-xs text-slate-400 transition peer-invalid:text-pink-500">
-                                <span>Type your phone number</span>
+                                <span>Type your Email</span>
                             </small>
                         </div>
                         {/*      <!-- Input field --> */}
@@ -37,7 +63,7 @@ const Login = () => {
                             <input
                                 id="id-b13"
                                 type="password"
-                                name="id-b13"
+                                name="password"
                                 placeholder="your password"
                                 className="peer relative h-10 w-full rounded border border-slate-200 px-4 pr-12 text-sm text-slate-500 placeholder-transparent outline-none transition-all bg-white invalid:border-pink-500 invalid:text-pink-500 focus:border-sky-300 focus:outline-none invalid:focus:border-pink-500 disabled:cursor-not-allowed disabled:bg-slate-50 disabled:text-slate-400"
                             />
@@ -69,7 +95,10 @@ const Login = () => {
                 </div>
                 {/*  <!-- Action base sized basic button --> */}
                 <div className="p-6 ">
-                    <button className="inline-flex h-10 w-full items-center justify-center gap-2 whitespace-nowrap rounded bg-sky-300 px-5 text-sm font-medium tracking-wide text-white transition duration-300 hover:bg-sky-500 focus:bg-emerald-700 focus-visible:outline-none disabled:cursor-not-allowed disabled:border-emerald-300 disabled:bg-emerald-300 disabled:shadow-none">
+                    {
+                        signInError && <p className='text-red-500 py-1 text-sm text-center'></p>
+                    }
+                    <button type='submit' className="inline-flex h-10 w-full items-center justify-center gap-2 whitespace-nowrap rounded bg-sky-400 px-5 text-sm font-medium tracking-wide text-white transition duration-300 hover:bg-sky-500 focus:bg-emerald-700 focus-visible:outline-none disabled:cursor-not-allowed disabled:border-emerald-300 disabled:bg-emerald-300 disabled:shadow-none">
                         <span>Log in</span>
                     </button>
                     <p className='py-1 text-sm font-semibold text-center'>Don't have an account?<span><Link to='/signUp' className='text-blue-500'> Sign Up</Link></span></p>

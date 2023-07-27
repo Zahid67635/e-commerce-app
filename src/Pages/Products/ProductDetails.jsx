@@ -8,13 +8,13 @@ const ProductDetails = () => {
     const { image, title, price, description, category, rating } = useLoaderData()
     const item = { image, title, price, description, category, rating }
     return (
-        <div className='md:flex gap-x-10 items-center py-10'>
-            <div className='flex justify-center items-center w-1/2'>
+        <div className='md:flex gap-x-10 md:gap-y-0 gap-y-4 items-center py-10'>
+            <div className='flex justify-center items-center md:w-1/2'>
                 <img src={image} className='w-1/2' alt="" />
             </div>
-            <div className='items-center w-1/2'>
+            <div className='items-center md:w-1/2 md:px-0 px-2'>
                 <h1 className='text-4xl font-bold pb-2'>{title}</h1>
-                <h2 className='text-2xl font-semibold pb-4'>Category: {category.toUpperCase()}</h2>
+                <h2 className='text-2xl font-semibold pb-4'>Category- <span className='text-blue-600'>{category.toUpperCase()}</span></h2>
                 <p className='font-semibold py-2 flex'>Rating - {rating.rate} <span className='mt-[-5px]'><HiStar className='text-yellow-500 text-2xl' /></span> </p>
                 <span className='font-semibold'>Reviews - {rating.count}</span><br />
                 <h2 className='text-2xl font-semibold pt-5'>Description: </h2>

@@ -1,9 +1,11 @@
 // eslint-disable-next-line no-unused-vars
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { HiShoppingCart } from "react-icons/hi";
+import { AuthContext } from '../Context/UserContext';
 
 const Navbar = () => {
+    const { user, logout } = useContext(AuthContext)
     return (
         <div>
             <header className="p-4 text-gray-800">
@@ -29,8 +31,10 @@ const Navbar = () => {
                         </li>
                     </ul>
                     <div className="md:pl-16 flex-shrink-0 hidden lg:flex gap-2">
-                        <Link to='/login' className="self-center px-8 py-3 rounded hover:bg-slate-200">Sign In</Link>
-                        <Link to='signUp' className="self-center px-8 py-3 font-semibold rounded hover:bg-sky-600 bg-sky-500 text-gray-50 ">Sign Up</Link>
+                        {
+                            user ? <div className='flex items-center gap-2'><p>Welcome, {user?.displayName.toUpperCase()}</p><button onClick={logout} className='self-center px-8 py-3 font-semibold rounded hover:bg-sky-600 bg-sky-500 text-gray-50 '>Logout</button></div> : <><Link to='/login' className="self-center px-8 py-3 rounded hover:bg-slate-200">Sign In</Link>
+                                <Link to='signUp' className="self-center px-8 py-3 font-semibold rounded hover:bg-sky-600 bg-sky-500 text-gray-50 ">Sign Up</Link></>
+                        }
                     </div>
                     <div className="dropdown dropdown-end">
                         <label tabIndex={0} className="btn p-4 lg:hidden"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-6 h-6 text-gray-800">

@@ -74,10 +74,10 @@ const Products = () => {
     }
     return (
         <div>
-            <div className='flex justify-between pb-8'>
-                <h1 className='text-3xl font-bold'>All Products: </h1>
-                <div className=''>
-                    <span className='pr-2 font-semibold'>Categories: </span>
+            <div className='md:flex justify-between pb-8'>
+                <h1 className='md:text-3xl text-2xl px-2 md:px-0 pb-2 font-bold'>All Products: </h1>
+                <div className='px-2 md:px-0 flex items-center'>
+                    <h1 className='pr-2 font-bold hidden md:block text-orange-500'>Categories: </h1>
                     <button onClick={handleAll} className={`p-2 px-3 text-sm font-semibold rounded-xl shadow-lg shadow-gray-300 ${activeAll ? 'bg-sky-500 text-white' : ''}`}>All</button>
                     <button onClick={handleJewelery} className={`p-2 text-sm font-semibold rounded-xl shadow-lg shadow-gray-300 mx-2 ${active ? 'bg-sky-500 text-white' : ''}`}>Jewelery</button>
                     <button onClick={handleClothing} className={`p-2 text-sm font-semibold rounded-xl shadow-md shadow-gray-300 mx-2 ${activeCloth ? 'bg-sky-500 text-white' : ''}`}>Clothing</button>
@@ -86,7 +86,7 @@ const Products = () => {
             </div>
             {
                 loading ? <Spinner /> :
-                    <div className='md:grid grid-cols-3 gap-8'>
+                    <div className='md:grid grid-cols-3 gap-8 p-3 md:p-0'>
                         {
                             products.map(p => <ProductCard details={p} key={p.id} />)
                         }

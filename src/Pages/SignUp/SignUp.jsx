@@ -1,11 +1,58 @@
 // eslint-disable-next-line no-unused-vars
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../Context/UserContext';
+import { toast } from 'react-hot-toast';
 
 const SignUp = () => {
+    const navigate = useNavigate();
+    const [error, setError] = useState('');
+    const from = '/'
+    const { createUser, updateUser } = useContext(AuthContext);
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const form = e.target;
+        const userName = form.userName.value
+        const email = form.email.value;
+        const password = form.password.value;
+        const confirmPassword = form.confirmPassword.value;
+
+        if (password !== confirmPassword) {
+            setError('Password are not same!!')
+            return;
+        }
+        if (password.length < 8) {
+            setError('Password have to be 8 characters!!')
+            return;
+        }
+
+
+        createUser(email, password)
+            .then((result) => {
+                const user = result.user;
+                console.log(user);
+                const userInfo = {
+                    displayName: userName
+                }
+
+                updateUser(userInfo)
+                    .then(() => {
+                        console.log(userInfo);
+
+                    })
+                    .catch(err => console.log(err));
+                form.reset()
+                toast.success('Account Created Successfully!!')
+                navigate(from, { replace: true })
+            })
+            .catch((err) => {
+                console.log(err);
+                setError(err.message)
+            })
+    }
     return (
         <div className='w-3/4 mx-auto my-10'>
-            <form className="overflow-hidden rounded bg-white text-slate-500 shadow-lg shadow-sky-300 md:w-96 mx-auto">
+            <form onSubmit={handleSubmit} className="overflow-hidden rounded bg-white text-slate-500 shadow-lg shadow-sky-300 md:w-96 mx-auto">
                 {/*  <!-- Body--> */}
                 <div className="p-6">
                     <header className="mb-4 text-center">
@@ -17,15 +64,33 @@ const SignUp = () => {
                             <input
                                 id="id-b03"
                                 type="email"
-                                name="id-b03"
+                                name="email"
                                 placeholder="your name"
-                                className="peer relative h-10 w-full rounded border border-slate-200 px-4 text-sm text-slate-500 placeholder-transparent outline-none transition-all bg-white invalid:border-pink-500 invalid:text-pink-500 focus:border-sky-300 focus:outline-none invalid:focus:border-pink-500 disabled:cursor-not-allowed disabled:bg-slate-50 disabled:text-slate-400 "
+                                className="peer relative h-10 w-full rounded border border-slate-200 px-4 text-sm text-slate-500 placeholder-transparent outline-none transition-all bg-white focus:border-sky-300 focus:outline-none invalid:focus:border-pink-500 disabled:cursor-not-allowed disabled:bg-slate-50 "
+                                required
+                            />
+                            <label
+                                htmlFor="id-b03"
+                                className="absolute left-2 -top-2 z-[1] px-2 text-xs text-slate-400 transition-all before:absolute before:top-0 before:left-0 before:z-[-1] before:block before:h-full before:w-full before:bg-white before:transition-all peer-placeholder-shown:top-2.5 peer-placeholder-shown:text-sm peer-required:after:text-pink-500 peer-required:after:content-['\00a0*'] peer-invalid:text-pink-500 peer-focus:-top-2 peer-focus:text-xs peer-focus:text-sky-300 peer-invalid:peer-focus:text-pink-500 peer-disabled:cursor-not-allowed peer-disabled:before:bg-transparent"
+                            >
+                                Your email
+                            </label>
+
+                        </div>
+                        <div className="relative mt-6 mb-1">
+                            <input
+                                id="id-b03"
+                                type="text"
+                                name="userName"
+                                placeholder="your name"
+                                className="peer relative h-10 w-full rounded border border-slate-200 px-4 text-sm text-slate-500 placeholder-transparent outline-none transition-all bg-white focus:border-sky-300 focus:outline-none invalid:focus:border-pink-500 disabled:cursor-not-allowed disabled:bg-slate-50"
+                                required
                             />
                             <label
                                 htmlFor="id-b03"
                                 className="absolute left-2 -top-2 z-[1] px-2 text-xs text-slate-400 transition-all before:absolute before:top-0 before:left-0 before:z-[-1] before:block before:h-full before:w-full before:bg-white before:transition-all peer-placeholder-shown:top-2.5 peer-placeholder-shown:text-sm peer-required:after:text-pink-500 peer-required:after:content-['\00a0*'] peer-invalid:text-pink-500 peer-focus:-top-2 peer-focus:text-xs peer-focus:text-sky-300 peer-invalid:peer-focus:text-pink-500 peer-disabled:cursor-not-allowed peer-disabled:text-slate-400 peer-disabled:before:bg-transparent"
                             >
-                                Your email
+                                Your Name
                             </label>
 
                         </div>
@@ -33,9 +98,10 @@ const SignUp = () => {
                             <input
                                 id="id-b05"
                                 type="number"
-                                name="id-b05"
+                                name="number"
                                 placeholder="your number"
-                                className="peer relative h-10 w-full rounded border border-slate-200 px-4 text-sm text-slate-500 placeholder-transparent outline-none transition-all bg-white invalid:border-pink-500 invalid:text-pink-500 focus:border-sky-300 focus:outline-none invalid:focus:border-pink-500 disabled:cursor-not-allowed disabled:bg-slate-50 disabled:text-slate-400 "
+                                className="peer relative h-10 w-full rounded border border-slate-200 px-4 text-sm text-slate-500 placeholder-transparent outline-none transition-all bg-white focus:border-sky-300 focus:outline-none invalid:focus:border-pink-500 disabled:cursor-not-allowed disabled:bg-slate-50"
+                                required
                             />
                             <label
                                 htmlFor="id-b05"
@@ -50,9 +116,10 @@ const SignUp = () => {
                             <input
                                 id="id-b13"
                                 type="password"
-                                name="id-b13"
+                                name="password"
                                 placeholder="your password"
-                                className="peer relative h-10 w-full rounded border border-slate-200 px-4 pr-12 text-sm text-slate-500 placeholder-transparent outline-none transition-all bg-white invalid:border-pink-500 invalid:text-pink-500 focus:border-sky-300 focus:outline-none invalid:focus:border-pink-500 disabled:cursor-not-allowed disabled:bg-slate-50 disabled:text-slate-400"
+                                className="peer relative h-10 w-full rounded border border-slate-200 px-4 text-sm text-slate-500 placeholder-transparent outline-none transition-all bg-white focus:border-sky-300 focus:outline-none invalid:focus:border-pink-500 disabled:cursor-not-allowed disabled:bg-slate-50 "
+                                required
                             />
                             <label
                                 htmlFor="id-b13"
@@ -80,9 +147,10 @@ const SignUp = () => {
                             <input
                                 id="id-b14"
                                 type="password"
-                                name="id-b14"
+                                name="confirmPassword"
                                 placeholder="confirm password"
-                                className="peer relative h-10 w-full rounded border border-slate-200 px-4 pr-12 text-sm text-slate-500 placeholder-transparent outline-none transition-all bg-white invalid:border-pink-500 invalid:text-pink-500 focus:border-sky-300 focus:outline-none invalid:focus:border-pink-500 disabled:cursor-not-allowed disabled:bg-slate-50 disabled:text-slate-400"
+                                className="peer relative h-10 w-full rounded border border-slate-200 px-4 text-sm text-slate-500 placeholder-transparent outline-none transition-all bg-white focus:border-sky-300 focus:outline-none invalid:focus:border-pink-500 disabled:cursor-not-allowed disabled:bg-slate-50 "
+                                required
                             />
                             <label
                                 htmlFor="id-b14"
@@ -90,16 +158,18 @@ const SignUp = () => {
                             >
                                 Confirm Password
                             </label>
-
-
                         </div>
                     </div>
                 </div>
                 {/*  <!-- Action base sized basic button --> */}
                 <div className="p-6">
-                    <button className="inline-flex h-10 w-full items-center justify-center gap-2 whitespace-nowrap rounded bg-sky-300 px-5 text-sm font-medium tracking-wide text-white transition duration-300 hover:bg-sky-500 focus:bg-emerald-700 focus-visible:outline-none disabled:cursor-not-allowed disabled:border-emerald-300 disabled:bg-emerald-300 disabled:shadow-none">
-                        <span>Log in</span>
+                    {
+                        error && <p className='text-red-500 py-1 text-sm text-center'>{error}</p>
+                    }
+                    <button type='submit' className="inline-flex h-10 w-full items-center justify-center gap-2 whitespace-nowrap rounded bg-sky-400 px-5 text-sm font-medium tracking-wide text-white transition duration-300 hover:bg-sky-500 focus:bg-emerald-700 focus-visible:outline-none disabled:cursor-not-allowed disabled:border-emerald-300 disabled:bg-emerald-300 disabled:shadow-none">
+                        <span>Sign Up</span>
                     </button>
+
                     <p className='py-1 text-sm font-semibold text-center'>Already have an account?<span><Link to='/login' className='text-blue-500'> Login</Link></span></p>
                 </div>
             </form>
