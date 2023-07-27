@@ -32,7 +32,7 @@ const Navbar = () => {
                     </ul>
                     <div className="md:pl-16 flex-shrink-0 hidden lg:flex gap-2">
                         {
-                            user ? <div className='flex items-center gap-2'><p>Welcome, {user?.displayName.toUpperCase()}</p><button onClick={logout} className='self-center px-8 py-3 font-semibold rounded hover:bg-sky-600 bg-sky-500 text-gray-50 '>Logout</button></div> : <><Link to='/login' className="self-center px-8 py-3 rounded hover:bg-slate-200">Sign In</Link>
+                            user ? <div className='flex items-center gap-2'><p>Welcome, {user?.displayName}</p><button onClick={logout} className='self-center px-8 py-3 font-semibold rounded hover:bg-sky-600 bg-sky-500 text-gray-50 '>Logout</button></div> : <><Link to='/login' className="self-center px-8 py-3 rounded hover:bg-slate-200">Sign In</Link>
                                 <Link to='signUp' className="self-center px-8 py-3 font-semibold rounded hover:bg-sky-600 bg-sky-500 text-gray-50 ">Sign Up</Link></>
                         }
                     </div>
@@ -61,6 +61,7 @@ const Navbar = () => {
 
                 </div>
             </header>
+
         </div>
     );
 };

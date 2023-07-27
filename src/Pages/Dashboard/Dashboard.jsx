@@ -1,12 +1,14 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { HiMenu, HiPlus } from "react-icons/hi";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../Context/UserContext";
 
 const Dashboard = () => {
     const [translate, setTranslate] = useState(true)
     const handleTransform = () => {
         setTranslate(!translate)
     }
+    const { user } = useContext(AuthContext)
     return (
         <div>
             <div className='md:flex md:min-h-screen'>
@@ -20,7 +22,7 @@ const Dashboard = () => {
                     <div className="flex items-center p-2 space-x-4">
                         <img src="https://source.unsplash.com/100x100/?portrait" alt="" className="w-12 h-12 rounded-full bg-gray-500" />
                         <div>
-                            <h2 className="text-lg font-semibold">Name</h2>
+                            <h2 className="text-lg font-semibold">{user?.displayName}</h2>
                             <span className="flex items-center space-x-1">
                                 <Link to='/profile' className="text-xs hover:underline text-black hover:text-purple-400">View profile</Link>
                             </span>

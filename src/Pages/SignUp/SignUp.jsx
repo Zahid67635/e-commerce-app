@@ -41,9 +41,9 @@ const SignUp = () => {
 
                     })
                     .catch(err => console.log(err));
-                form.reset()
                 toast.success('Account Created Successfully!!')
                 navigate(from, { replace: true })
+                form.reset()
             })
             .catch((err) => {
                 console.log(err);

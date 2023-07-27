@@ -13,6 +13,7 @@ import DashboardLayout from './layout/DashboardLayout'
 import AllProducts from './Pages/Dashboard/AllProducts'
 import AllCustomers from './Pages/Dashboard/AllCustomers'
 import AddProduct from './Pages/Dashboard/AddProduct'
+import PrivateRoute from './PrivateRoute/PrivateRoute'
 
 function App() {
   const router = createBrowserRouter([
@@ -45,25 +46,25 @@ function App() {
         },
         {
           path: '/cart',
-          element: <Cart />
+          element: <PrivateRoute><Cart /></PrivateRoute>
         },
       ]
     },
     {
       path: '/dashboard',
-      element: <DashboardLayout />,
+      element: <PrivateRoute><DashboardLayout /></PrivateRoute>,
       children: [
         {
           path: '/dashboard/allProducts',
-          element: <AllProducts />,
+          element: <PrivateRoute><AllProducts /></PrivateRoute>
         },
         {
           path: '/dashboard/allCustomers',
-          element: <AllCustomers />,
+          element: <PrivateRoute><AllCustomers /></PrivateRoute>
         },
         {
           path: '/dashboard/addProduct',
-          element: <AddProduct />
+          element: <PrivateRoute><AddProduct /></PrivateRoute>
         }
 
       ]
