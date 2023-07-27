@@ -11,6 +11,12 @@ const Cart = () => {
     function refreshPage() {
         window.location.reload(false);
     }
+    const currentDate = new Date();
+    const year = currentDate.getFullYear();
+    const month = String(currentDate.getMonth() + 1).padStart(2, '0');
+    const day = String(currentDate.getDate()).padStart(2, '0');
+
+    const formattedDate = `${year}-${month}-${day}`;
 
     return (
         <section>
@@ -33,7 +39,7 @@ const Cart = () => {
                                         </h1>
                                         <p>Date</p>
                                         <div className='flex justify-center items-center p-2 border mt-1 mb-2'>
-                                            <div>date</div>
+                                            <div>{formattedDate}</div>
 
                                         </div>
 

@@ -1,8 +1,9 @@
 /* eslint-disable react/prop-types */
 
 import { Link } from "react-router-dom";
+import cartProduct from "./function/AddToCart";
 
-const ProductCard = ({ details, cartProduct }) => {
+const ProductCard = ({ details }) => {
     const { title, image, rating, price, id } = details
     return (
         <div>
