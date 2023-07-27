@@ -58,7 +58,7 @@ const Dashboard = () => {
                                 </Link>
                             </li>
                             <li>
-                                <Link to='/dashboard/wishlist' className="flex items-center p-2 space-x-3 hover:bg-purple-800 focus:bg-purple-700 text-black hover:text-white rounded-md">
+                                <Link to='/dashboard/addProduct' className="flex items-center p-2 space-x-3 hover:bg-purple-800 focus:bg-purple-700 text-black hover:text-white rounded-md">
                                     <HiPlus className="text-xl" />
                                     <span>Add Product</span>
                                 </Link>

@@ -10,6 +10,9 @@ import SignUp from './Pages/SignUp/SignUp'
 import Cart from './Pages/Cart/Cart'
 import ProductDetails from './Pages/Products/ProductDetails'
 import DashboardLayout from './layout/DashboardLayout'
+import AllProducts from './Pages/Dashboard/AllProducts'
+import AllCustomers from './Pages/Dashboard/AllCustomers'
+import AddProduct from './Pages/Dashboard/AddProduct'
 
 function App() {
   const router = createBrowserRouter([
@@ -51,8 +54,18 @@ function App() {
       element: <DashboardLayout />,
       children: [
         {
-
+          path: '/dashboard/allProducts',
+          element: <AllProducts />,
+        },
+        {
+          path: '/dashboard/allCustomers',
+          element: <AllCustomers />,
+        },
+        {
+          path: '/dashboard/addProduct',
+          element: <AddProduct />
         }
+
       ]
     },
     {

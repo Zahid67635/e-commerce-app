@@ -7,9 +7,9 @@ const AllCustomers = () => {
                     {/* head */}
                     <thead>
                         <tr>
-                            <th>Product Name</th>
-                            <th>Job</th>
-                            <th>Favorite Color</th>
+                            <th>Customer</th>
+                            <th>Email</th>
+                            <th>Contact</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -26,18 +26,16 @@ const AllCustomers = () => {
                                     </div>
                                     <div>
                                         <div className="font-bold">Hart Hagerty</div>
-                                        <div className="text-sm opacity-50">United States</div>
+
                                     </div>
                                 </div>
                             </td>
                             <td>
-                                Zemlak, Daniel and Leannon
-                                <br />
-                                <span className="badge badge-ghost badge-sm">Desktop Support Technician</span>
+                                ali@gmail.com
                             </td>
-                            <td>Purple</td>
+                            <td>01232131333</td>
                             <th>
-                                <button className="btn btn-ghost btn-xs">details</button>
+                                <button className="btn btn-ghost btn-xs">Delete Customer</button>
                             </th>
                         </tr>
                         {/* row 2 */}

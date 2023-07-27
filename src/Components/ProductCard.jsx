@@ -7,7 +7,7 @@ const ProductCard = ({ details }) => {
     const { title, image, rating, price, id } = details
     return (
         <div>
-            <div className="overflow-hidden rounded bg-white text-slate-500 shadow-lg shadow-green-300 md:h-[430px] w-[350px] relative">
+            <div className="overflow-hidden rounded-lg bg-white text-slate-500 shadow-lg shadow-green-300 md:h-[430px] w-[350px] relative">
                 {/*  <!-- Image --> */}
                 <figure>
                     <img
