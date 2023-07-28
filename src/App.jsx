@@ -14,6 +14,8 @@ import AllProducts from './Pages/Dashboard/AllProducts'
 import AllCustomers from './Pages/Dashboard/AllCustomers'
 import AddProduct from './Pages/Dashboard/AddProduct'
 import PrivateRoute from './PrivateRoute/PrivateRoute'
+import OrderProducts from './Pages/Dashboard/OrderProducts'
+import NotFound from './Pages/NotFound/NotFound'
 
 function App() {
   const router = createBrowserRouter([
@@ -69,13 +71,17 @@ function App() {
         {
           path: '/dashboard/addProduct',
           element: <PrivateRoute><AddProduct /></PrivateRoute>
+        },
+        {
+          path: '/dashboard/orderProducts',
+          element: <PrivateRoute><OrderProducts /></PrivateRoute>
         }
 
       ]
     },
     {
       path: '*',
-      element: <p>404 NOT FOUND</p>
+      element: <NotFound />
     }
   ])
   return (

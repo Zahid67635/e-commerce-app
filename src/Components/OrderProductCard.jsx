@@ -1,12 +1,9 @@
 /* eslint-disable react/prop-types */
 
-import { Link } from "react-router-dom";
 
-const ProductTable = ({ product }) => {
-    const { id, title, image, price, category } = product
+const OrderProductCard = ({ product }) => {
+    const { id, title, image, category } = product
     return (
-
-
         <tbody>
             {/* row 1 */}
             <tr>
@@ -23,13 +20,10 @@ const ProductTable = ({ product }) => {
                         </div>
                     </div>
                 </td>
-                <td>
-                    <span>${price}</span>
-                </td>
                 <td>{category}</td>
-                <th className="flex gap-1">
-                    <Link to={`/productDetails/${id}`}><button className="btn btn-info hover:bg-blue-400 text-white btn-xs">Details</button></Link>
-                    <button className="btn btn-error hover:bg-red-500 text-white btn-xs">Delete</button>
+                <td>abc@gmail.com</td>
+                <th>
+                    <button className="btn btn-info btn-xs hover:bg-blue-400 text-white ">Order Info</button>
                 </th>
             </tr>
 
@@ -37,4 +31,4 @@ const ProductTable = ({ product }) => {
     );
 };
 
-export default ProductTable;
+export default OrderProductCard;
