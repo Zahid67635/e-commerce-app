@@ -13,7 +13,7 @@ const Dashboard = () => {
         <div>
             <div className='md:flex md:min-h-screen'>
                 <div className='md:hidden flex justify-start'>
-                    <button onClick={handleTransform} className='p-4 focus:outline-none flex items-center gap-1'><HiMenu className='w-5 h-5' /><span className='text-sm'>Show Menu</span></button>
+                    <button onClick={handleTransform} className='p-4 focus:outline-none flex items-center gap-1'><HiMenu className='w-5 h-5' /><span className='text-sm'>Menu</span></button>
                 </div>
                 <div className={`md:p-4 p-3 md:pb-12 space-y-2 md:w-72 bg-gray-100 text-black absolute inset-y-0 left-0 transform ${translate ? '-translate-x-full' : ''} transition duration-200 ease-in-out md:relative md:translate-x-0 z-20 rounded-lg`}>
                     <div className='flex justify-end md:hidden'>
@@ -50,7 +50,7 @@ const Dashboard = () => {
                                 </Link>
                             </li>
                             <li>
-                                <Link to='/dashboard/booked-properties' className="flex items-center p-2 space-x-3 hover:bg-purple-800 focus:bg-purple-700 text-black hover:text-white rounded-md">
+                                <Link to='/dashboard/orderProducts' className="flex items-center p-2 space-x-3 hover:bg-purple-800 focus:bg-purple-700 text-black hover:text-white rounded-md">
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" className="w-5 h-5 fill-current text-black hover:text-white">
                                         <path d="M203.247,386.414,208,381.185V355.4L130.125,191H93.875L16,355.4v27.042l4.234,4.595a124.347,124.347,0,0,0,91.224,39.982h.42A124.343,124.343,0,0,0,203.247,386.414ZM176,368.608a90.924,90.924,0,0,1-64.231,26.413h-.33A90.907,90.907,0,0,1,48,369.667V362.6l64-135.112L176,362.6Z"></path>
                                         <path d="M418.125,191h-36.25L304,355.4v27.042l4.234,4.595a124.347,124.347,0,0,0,91.224,39.982h.42a124.343,124.343,0,0,0,91.369-40.607L496,381.185V355.4ZM464,368.608a90.924,90.924,0,0,1-64.231,26.413h-.33A90.907,90.907,0,0,1,336,369.667V362.6l64-135.112L464,362.6Z"></path>

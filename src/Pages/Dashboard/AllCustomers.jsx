@@ -35,7 +35,7 @@ const AllCustomers = () => {
                             </td>
                             <td>01232131333</td>
                             <th>
-                                <button className="btn btn-ghost btn-xs">Delete Customer</button>
+                                <button className="btn btn-warning btn-xs">Delete Customer</button>
                             </th>
                         </tr>
                         {/* row 2 */}
