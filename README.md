@@ -1,8 +1,18 @@
 # React + Vite
+Live-Link: https://e-commerce-be4a4.web.app/
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Tech - React(vite), Tailwindcss, daisyUI, windUI, react-hot-toast, firebase, Lottie flies, fetch API.
 
-Currently, two official plugins are available:
+Description:
+This is a e-commerce website where customer can buy their products by signing in. Admin has a dashboard where he/she can see the users, available products etc. 
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Features:
+
+* user can filter products by category
+* user can add products to the cart
+* can remove an item from cart
+* admin dashboard
+* authentication by firebase
+* Responsive for phone and PC 
+
+Note: More features are coming soon.
