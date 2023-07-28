@@ -5,6 +5,7 @@ import React, { useContext, useState } from 'react';
 import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/UserContext';
 import { toast } from 'react-hot-toast';
+import useTitle from '../../hooks/useTitle';
 
 const Login = () => {
     const { login } = useContext(AuthContext)
@@ -12,6 +13,7 @@ const Login = () => {
     const location = useLocation();
     const navigate = useNavigate();
     const from = location.state?.from?.pathname || '/';
+    useTitle('Login')
     const handleSubmit = (e) => {
         e.preventDefault()
         const form = e.target;

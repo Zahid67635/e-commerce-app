@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import ProductCard from '../../Components/ProductCard';
 import Spinner from '../../Components/Spinner';
+import useTitle from '../../hooks/useTitle';
 
 const Products = () => {
     const [products, setProducts] = useState([])
@@ -10,7 +11,7 @@ const Products = () => {
     const [activeElec, setActiveElec] = useState(false)
     const [activeCloth, setActiveCloth] = useState(false)
     const [loading, setLoading] = useState(true)
-
+    useTitle('Products')
     useEffect(() => {
         fetch('https://fakestoreapi.com/products')
             .then(res => res.json())

@@ -28,10 +28,10 @@ const CartItem = ({ detail, refreshPage }) => {
     return (
         <div className="shadow-lg shadow-slate-300 md:h-28 md:flex mb-5">
             <div className="md:w-3/5 md:flex mx-5 md:mx-0">
-                <div className="rounded w-1/2 md:w-20 md:h-28 mx-auto">
-                    <img src={detail.image} className="w-20 h-28 p-2" alt="" />
+                <div className="rounded w-1/2 md:w-20 md:h-28 md:mx-0 mx-auto">
+                    <img src={detail.image} className="w-full h-full p-2" alt="" />
                 </div>
-                <div className="md:pl-0 pt-1">
+                <div className="md:pl-3 pt-1">
                     <h2 className="text-lg font-bold">{detail.title}</h2>
                     <h3 className="text-base">{detail.category.toUpperCase()}</h3>
                     <h3 className="text-md font-semibold">{detail.price}$</h3>

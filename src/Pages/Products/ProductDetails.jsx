@@ -3,9 +3,11 @@ import React from 'react';
 import { useLoaderData } from 'react-router-dom';
 import { HiStar } from "react-icons/hi";
 import cartProduct from '../../Components/function/AddToCart';
+import useTitle from '../../hooks/useTitle';
 
 const ProductDetails = () => {
-    const { image, title, price, description, category, rating } = useLoaderData()
+    const { id, image, title, price, description, category, rating } = useLoaderData()
+    useTitle(`Details - ${id}`)
     const item = { image, title, price, description, category, rating }
     return (
         <div className='md:flex gap-x-10 md:gap-y-0 gap-y-4 items-center py-10'>

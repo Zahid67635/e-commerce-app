@@ -55,6 +55,10 @@ function App() {
       element: <PrivateRoute><DashboardLayout /></PrivateRoute>,
       children: [
         {
+          path: '/dashboard',
+          element: <PrivateRoute><AllProducts /></PrivateRoute>
+        },
+        {
           path: '/dashboard/allProducts',
           element: <PrivateRoute><AllProducts /></PrivateRoute>
         },

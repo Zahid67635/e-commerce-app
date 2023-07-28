@@ -2,7 +2,10 @@
 import React from 'react';
 import Lottie from 'lottie-react';
 import anim from '../../assets/anim.json'
+import { Link } from 'react-router-dom';
+import useTitle from '../../hooks/useTitle';
 const Home = () => {
+    useTitle('Home')
     return (
         <div>
             <section className="text-gray-800">
@@ -16,7 +19,7 @@ const Home = () => {
                             <span className='text-sky-500'>E-Commerce</span>, Your one-stop destination for seamless online shopping and unbeatable deals
                         </p>
                         <div className="flex flex-col space-y-4 sm:items-center sm:justify-center sm:flex-row sm:space-y-0 sm:space-x-4 lg:justify-start">
-                            <a rel="noopener noreferrer" href="#" className="px-8 py-3 text-lg font-semibold rounded bg-sky-600 hover:bg-sky-700 text-gray-50">SHOP</a>
+                            <Link to='/products' rel="noopener noreferrer" href="#" className="px-8 py-3 text-lg font-semibold rounded bg-sky-600 hover:bg-sky-700 text-gray-50">SHOP</Link>
                             <a rel="noopener noreferrer" href="#" className="px-8 py-3 text-lg font-semibold border rounded border-gray-800 hover:text-sky-600">Categories</a>
                         </div>
                     </div>

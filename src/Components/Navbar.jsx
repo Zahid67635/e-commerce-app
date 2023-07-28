@@ -3,7 +3,6 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { HiShoppingCart } from "react-icons/hi";
 import { AuthContext } from '../Context/UserContext';
-
 const Navbar = () => {
     const { user, logout } = useContext(AuthContext)
     return (
@@ -18,7 +17,7 @@ const Navbar = () => {
                     </a>
                     <ul className="items-stretch hidden space-x-1 lg:flex md:ml-28">
                         <li className="flex">
-                            <Link to='/' className="flex items-center px-4 -mb-1 border-b-2 border-transparent border-sky-600">Home</Link>
+                            <Link to='/' className="flex items-center px-4 -mb-1">Home</Link>
                         </li>
                         <li className="flex">
                             <Link to='/products' rel="noopener noreferrer" href="#" className="flex items-center px-4 -mb-1 border-b-2 border-transparent">Products</Link>
@@ -32,14 +31,18 @@ const Navbar = () => {
                     </ul>
                     <div className="md:pl-16 flex-shrink-0 hidden lg:flex gap-2">
                         {
-                            user ? <div className='flex items-center gap-2'><p>Welcome, {user?.displayName}</p><button onClick={logout} className='self-center px-8 py-3 font-semibold rounded hover:bg-sky-600 bg-sky-500 text-gray-50 '>Logout</button></div> : <><Link to='/login' className="self-center px-8 py-3 rounded hover:bg-slate-200">Sign In</Link>
+                            user ? <div className='flex items-center gap-2'><p className='font-semibold flex items-center p-1 text-base'>Welcome, {user?.displayName}</p><button onClick={logout} className='self-center px-8 py-3 font-semibold rounded hover:bg-sky-600 bg-sky-500 text-gray-50 '>Logout</button></div> : <><Link to='/login' className="self-center px-8 py-3 rounded hover:bg-slate-200">Sign In</Link>
                                 <Link to='signUp' className="self-center px-8 py-3 font-semibold rounded hover:bg-sky-600 bg-sky-500 text-gray-50 ">Sign Up</Link></>
                         }
                     </div>
-                    <div className="dropdown dropdown-end">
-                        <label tabIndex={0} className="btn p-4 lg:hidden"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-6 h-6 text-gray-800">
+                    <div className="dropdown flex dropdown-end">
+                        {
+                            user && <p className='font-semibold flex items-center p-1 text-sm md:hidden'>Welcome, {user?.displayName}</p>
+                        }
+                        <label tabIndex={0} className="btn flex items-center p-4 lg:hidden"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-6 h-6 text-gray-800">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path>
                         </svg></label>
+
                         <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
                             <li className="flex">
                                 <Link to='/' className="flex items-center px-4 -mb-1 border-b-2 border-transparent border-sky-600">Home</Link>
@@ -53,12 +56,14 @@ const Navbar = () => {
                             <li className="flex">
                                 <Link to='/cart' rel="noopener noreferrer" href="#" className="flex items-center px-4 -mb-1 border-b-2 border-transparent">Cart <span className='text-2xl'><HiShoppingCart className='text-orange-300' /></span></Link>
                             </li>
-                            <li><Link to='/login' className="flex items-center px-4 mb-2 py-2 rounded hover:bg-slate-200">Sign In</Link>
-                            </li>
-                            <li><Link to='signUp' className="flex items-center px-4 ml-4 py-2 font-semibold rounded hover:bg-sky-600 bg-sky-500 text-gray-50 w-1/2">Sign Up</Link></li>
+                            {
+                                user ? <div className='items-center gap-2'><button onClick={logout} className='flex items-center ml-4 md:px-8 px-4 md:py-3 py-2 font-semibold rounded hover:bg-sky-600 bg-sky-500 text-gray-50 '>Logout</button></div> : <><li><Link to='/login' className="flex items-center px-4 mb-2 py-2 rounded hover:bg-slate-200">Sign In</Link>
+                                </li>
+                                    <li><Link to='signUp' className="flex items-center px-4 ml-4 py-2 font-semibold rounded hover:bg-sky-600 bg-sky-500 text-gray-50 w-1/2">Sign Up</Link></li></>
+                            }
+
                         </ul>
                     </div>
-
                 </div>
             </header>
 

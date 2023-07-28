@@ -8,14 +8,14 @@ const Dashboard = () => {
     const handleTransform = () => {
         setTranslate(!translate)
     }
-    const { user } = useContext(AuthContext)
+    const { user, logout } = useContext(AuthContext)
     return (
         <div>
             <div className='md:flex md:min-h-screen'>
                 <div className='md:hidden flex justify-start'>
                     <button onClick={handleTransform} className='p-4 focus:outline-none flex items-center gap-1'><HiMenu className='w-5 h-5' /><span className='text-sm'>Show Menu</span></button>
                 </div>
-                <div className={`md:p-4 p-3 md:pb-12 space-y-2 md:w-72 bg-gray-100 text-black absolute inset-y-0 left-0 transform ${translate ? '-translate-x-full' : ''} transition duration-200 ease-in-out md:relative md:translate-x-0 z-20`}>
+                <div className={`md:p-4 p-3 md:pb-12 space-y-2 md:w-72 bg-gray-100 text-black absolute inset-y-0 left-0 transform ${translate ? '-translate-x-full' : ''} transition duration-200 ease-in-out md:relative md:translate-x-0 z-20 rounded-lg`}>
                     <div className='flex justify-end md:hidden'>
                         <button onClick={handleTransform} className='w-5 h-5'> X </button>
                     </div>
@@ -70,7 +70,7 @@ const Dashboard = () => {
                         <ul className="pt-4 pb-2 space-y-1 text-sm">
 
                             <li>
-                                <Link to='/' className="flex w-full items-center p-2 space-x-3 hover:bg-purple-800 focus:bg-purple-700 text-black hover:text-white rounded-md">
+                                <Link onClick={logout} to='/' className="flex w-full items-center p-2 space-x-3 hover:bg-purple-800 focus:bg-purple-700 text-black hover:text-white rounded-md">
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" className="w-5 h-5 fill-current text-black hover:text-white">
                                         <path d="M440,424V88H352V13.005L88,58.522V424H16v32h86.9L352,490.358V120h56V456h88V424ZM320,453.642,120,426.056V85.478L320,51Z"></path>
                                         <rect width="32" height="64" x="256" y="232"></rect>

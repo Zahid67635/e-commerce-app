@@ -1,11 +1,13 @@
 
 import { toast } from "react-hot-toast";
 import CartItem from "./CartItem";
+import useTitle from "../../hooks/useTitle";
 
 const Cart = () => {
     const cart = localStorage.getItem('myCart')
     const cartArray = JSON.parse(cart || '[]')
     let total = 0;
+    useTitle('Cart')
     for (const item of cartArray) {
         total = total + item.price;
     }
@@ -36,7 +38,7 @@ const Cart = () => {
                                 <div className='w-4/5'>
                                     <div className='border-solid border-2 rounded-xl p-4 w-full shadow-lg'>
                                         <h1 className='text-gray-900 text-3xl title-font font-medium mb-2'>
-                                            $<span>{total}</span>
+                                            $<span>{total.toFixed(2)}</span>
                                         </h1>
                                         <p>Date</p>
                                         <div className='flex justify-center items-center p-2 border mt-1 mb-2'>
@@ -46,7 +48,7 @@ const Cart = () => {
 
                                         <div className='flex border-t border-gray-200 py-2'>
                                             <span className='text-gray-500'>Product Cost</span>
-                                            <span className='ml-auto text-gray-900'>${total}</span>
+                                            <span className='ml-auto text-gray-900'>${total.toFixed(2)}</span>
                                         </div>
 
                                         <div className='flex border-t border-gray-200 py-2'>
@@ -55,7 +57,7 @@ const Cart = () => {
                                         </div>
                                         <div className='flex border-t border-b mb-6 border-gray-200 py-2'>
                                             <span className='text-gray-900 font-bold'>Total</span>
-                                            <span className='ml-auto text-gray-900'>${total + 5}</span>
+                                            <span className='ml-auto text-gray-900'>${(total + 5).toFixed(2)}</span>
                                         </div>
                                         <div className='mt-6 mb-2'>
                                             <button onClick={() => toast.success('Congratulations, Order Confirmed!!')} className='p-3 bg-green-500 hover:bg-green-600 w-full text-white font-bold'>Order</button>
